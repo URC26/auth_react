@@ -31,14 +31,14 @@ export default function Login() {
   };
 
   return (
-    <div class='wrapper'>
-      <form onSubmit={loginUser} class='form-box'>
+    <div className='wrapper'>
+      <form onSubmit={loginUser} className='form-box'>
         <h2>Login</h2>
-        <div class='input-box'>
+        <div className='input-box'>
           <label>Email:</label>
           <input type='email' value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
         </div>
-        <div class='input-box'>
+        <div className='input-box'>
         <label>Password:</label>
         <input type='password' value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
         </div>
