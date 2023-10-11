@@ -6,12 +6,11 @@ const cookieParser = require('cookie-parser')
 
 const app = express();
 
-// database connection
 mongoose.connect(process.env.MONGO_URL)
 .then(() => console.log('Database Connected'))
 .catch((err) => console.log('Database not connected', err))
 
-// middleware
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));

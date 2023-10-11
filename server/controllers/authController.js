@@ -2,27 +2,20 @@ const User = require('../types/user');
 const { hashPassword, comparePassword } = require('../utils/auth');
 const jwt = require('jsonwebtoken');
 
-const test = (req, res) => {
-    res.json('test is working');
-};
 
-// Register endpoint
 const registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
-        // check if name was entered
         if (!name) {
             return res.json({
                 error: 'name is required'
             });
         }
-        // check if password is good
         if (!password || password.length < 6) {
             return res.json({
                 error: 'Password is required and should be at least 6 characters long'
             })
         }
-        // check email
         const exist = await User.findOne({ email });
         if (exist) {
             return res.json({
@@ -30,7 +23,6 @@ const registerUser = async (req, res) => {
             })
         }
         const hashedPassword = await hashPassword(password)
-        // create user in database
         const user = await User.create({
             name, email, password: hashedPassword
         });
@@ -41,19 +33,16 @@ const registerUser = async (req, res) => {
     }
 }
 
-// //Login endpoint
 const loginUser = async(req, res) =>{
     try {
         const {email, password} = req.body;
 
-        // check is user exists
         const user = await User.findOne({email});
         if(!user){
             return res.json({
                 error: 'No user found'
             })
         }
-        // check if passwords match
         const match = await comparePassword(password, user.password);
         if(match){
             jwt.sign({email: user.email, id: user._id, name: user.name}, process.env.JWT_SECRET, {}, (err, token) => {
@@ -84,7 +73,6 @@ const getProfile = (req, res) => {
 }
 
 module.exports = {
-    test,
     registerUser,
     loginUser,
     getProfile
