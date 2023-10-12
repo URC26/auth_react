@@ -13,4 +13,5 @@ username: urc26@yahoo.com
 password: ILoveCoding1234!@
 
 
-Also this project includes the bug that was sent in a different file called bug.js
+Also this project includes the bug that was sent in a different file called bugFix.js:
+- to run this file you need to use: node bugFix
