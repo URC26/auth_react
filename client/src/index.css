@@ -29,6 +29,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: wheat;
 }
 
 h1 {
@@ -50,6 +51,7 @@ button {
 }
 button:hover {
   border-color: green;
+  background: lightsteelblue;
 }
 button:focus,
 button:focus-visible {
@@ -95,6 +97,8 @@ button:focus-visible {
 .wrapper .form-box{
   width: 100%;
   padding: 40px;
+  background:cadetblue;
+  border-radius: inherit;
 }
 
 .form-box h2{
@@ -129,4 +133,12 @@ button:focus-visible {
   border: none;
   outline: none;
   position: right;
+}
+
+.list{
+  list-style-type: none;
+}
+
+.elem{
+  padding: 10px;
 }
